@@ -1,23 +1,23 @@
 # Docker Image Downloader
 
-这个项目通过 GitHub Actions 自动下载并保存 `vllm-ascend` Docker 镜像。
+This project automatically downloads and saves the `vllm-ascend` Docker image using GitHub Actions.
 
-## 功能
+## Features
 
-- 自动从 `quay.io` 拉取 `quay.io/ascend/vllm-ascend:v0.14.0rc1-openeuler` 镜像。
-- 将镜像保存为 `.tar` 归档文件。
-- 将生成的 tar 文件上传为 GitHub Actions 构件（Artifact）。
+- Automatically pulls the `quay.io/ascend/vllm-ascend:v0.14.0rc1-openeuler` image from `quay.io`.
+- Saves the image as a `.tar` archive.
+- Uploads the generated tar file as a GitHub Actions Artifact.
 
-## 使用方法
+## Usage
 
-1. 在 GitHub 仓库页面点击 **Actions** 选项卡。
-2. 在左侧边栏中选择 **Docker Image Downloader** 工作流。
-3. 点击 **Run workflow** 下拉菜单，然后点击 **Run workflow** 按钮。
-4. 等待工作流执行完毕。
-5. 在执行记录的 **Summary** 页面底部的 **Artifacts** 区域下载 `vllm-ascend-image`。
+1. Go to the **Actions** tab in your GitHub repository.
+2. Select the **Docker Image Downloader** workflow from the left sidebar.
+3. Click the **Run workflow** dropdown and then the **Run workflow** button.
+4. Wait for the workflow to complete.
+5. Download `vllm-ascend-image` from the **Artifacts** section at the bottom of the workflow run's **Summary** page.
 
-## 镜像详情
+## Image Details
 
-- **原始镜像**: `quay.io/ascend/vllm-ascend:v0.14.0rc1-openeuler`
-- **保存后的文件名**: `vllm-ascend-v0.14.0rc1-openeuler.tar`
-- **Artifact 保留时长**: 1 天
+- **Source Image**: `quay.io/ascend/vllm-ascend:v0.14.0rc1-openeuler`
+- **Saved Filename**: `vllm-ascend-v0.14.0rc1-openeuler.tar`
+- **Artifact Retention**: 1 day
