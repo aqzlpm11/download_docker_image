@@ -1,27 +1,22 @@
-name: Remote Download to Release
+name: Remote Download to Artifacts
 
 on:
-  workflow_dispatch: # 允许你手动点击按钮触发
+  workflow_dispatch: # 允许手动点击运行
 
 jobs:
-  download_and_upload:
+  download_job:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Download Large File
+    - name: Download File
       run: |
-        # 创建一个文件夹存放文件
-        mkdir -p downloads
-        cd downloads
-        # 使用 wget 下载你的目标文件，-O 后面是保存的文件名
-        wget "https://models.datalab.to/layout/2025_09_23/model.safetensors" -O model.safetensors
+        # 创建临时目录并下载文件
+        mkdir -p my_files
+        cd my_files
+        wget "https://models.datalab.to/layout/2025_09_23/model.safetensors"
 
-    - name: Upload to GitHub Release
-      uses: softprops/action-gh-release@v2
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
       with:
-        tag_name: v1.0.0
-        files: downloads/model.safetensors
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: model-safetensors-file  # 下载时的压缩包名称
+        path: my_files/model.safetensors  # 要保存的文件路径
+        retention-days: 5  # 可选：设置保留天数（默认90天，这里设为5天足够你下载了）
